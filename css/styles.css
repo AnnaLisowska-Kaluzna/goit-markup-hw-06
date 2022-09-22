@@ -90,14 +90,14 @@ img {
 
 label > .icon-input {
   position: absolute;
-  bottom: 8px;
+  bottom: 2px;
   left: 10px;
   transform: translateY(-50%);
   fill: var(--main-color);
 }
 
-label:hover input,
-label:focus-within input,
+label:hover input:not([type="checkbox"]),
+label:focus-within input:not([type="checkbox"]),
 label:hover textarea,
 label:focus-within textarea {
   border: 1px solid var(--color-hover);
@@ -114,6 +114,11 @@ label:focus-within svg {
   transition-property: fill;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox:hover svg,
+.checkbox:focus-within svg {
+  fill: none;
 }
 
 .comment::placeholder {
@@ -162,17 +167,6 @@ form .checkbox {
   margin-bottom: 20px;
 }
 
-/* .checkbox::before {
-  position: absolute;
-  content: "";
-   width: 16px;
-  height: 15px;
-  border: 1px solid var(--main-color);
-  border-radius: 2px;
-  margin-top: 4px;
-  margin-right: 408px;
-} */
-
 label .checkbox-input {
   margin-right: 7px;
   margin-top: 0;
@@ -185,22 +179,28 @@ label .checkbox-input {
   padding: 0;
 }
 
+.icon-checkbox {
+  border: 1px solid var(--main-color);
+  border-radius: 2px;
+}
+
 .checkbox svg {
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    transform: translateY(-50%);
-    fill: var(--color-white);
-    width: 16px;
-    height: 15px;
-transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  fill: var(--color-white);
+  width: 16px;
+  height: 15px;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .checkbox-input:checked + svg.icon-checkbox {
- background-color: var(--color-hover);
- fill: var(--color-white);
- border-radius: 2px;
-} 
+  background-color: var(--color-hover);
+  fill: var(--color-white);
+  border-radius: 2px;
+  border: 1px solid var(--main-color);
+}
 
 .checkbox:hover {
   cursor: pointer;
@@ -208,10 +208,6 @@ transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
 .checkbox:hover svg {
   fill: none;
-}
-.checkbox-input:hover {
-  border: 1px solid var(--main-color);
-  border-radius: 2px;
 }
 
 .link-rule {
@@ -238,13 +234,11 @@ transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
-/* .send-btn:hover,
-.send-btn:focus {
-
-} */
-
 .close-btn {
+  display: flex;
   position: absolute;
+  align-items: center;
+  justify-content: center;
   top: 8px;
   right: 8px;
   width: 30px;
@@ -981,13 +975,13 @@ label {
   border-radius: 4px;
   padding-left: 16px;
 }
- 
+
 .newsemail::placeholder {
   color: var(--placeholder-color-news);
 }
 
 .sub {
-position: absolute;
+  position: absolute;
   display: inline-block;
   font-style: normal;
   font-weight: 700;
@@ -998,6 +992,7 @@ position: absolute;
   letter-spacing: 0.06em;
   color: var(--color-white);
   background-color: var(--color-hover);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: none;
   width: 200px;
@@ -1007,7 +1002,7 @@ position: absolute;
 }
 
 .icon-send {
-    position: relative;
+  position: relative;
   top: 6px;
   fill: var(--color-white);
   margin-left: 24px;
